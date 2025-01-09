@@ -13,6 +13,6 @@ proj_nfe/<br>
 ├── testa_nfe.php<br>
 
 
-Biblioteca baixada via composer no CMD: 
-cd C:\xampp\htdocs\proj_nfe
-composer require nfephp-org/sped-nfe
+Biblioteca baixada via composer no CMD:<br>
+cd C:\xampp\htdocs\proj_nfe<br>
+composer require nfephp-org/sped-nfe<br>
