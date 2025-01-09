@@ -1,16 +1,16 @@
-DOCUMENTAÇÃO API NFE:
+DOCUMENTAÇÃO API NFE:<br>
 
-Servidor Xampp!
-Estrutura:
+Servidor Xampp!<br>
+Estrutura:<br>
 
-proj_nfe/
-├── certificado/
-│   └── certificado.pfx  (Certificado digital da sua empresa)
-├── Dockerfile //não usado
-├── docker-compose.yml//não usado
-├── vendor/
-├── composer.json
-├── testa_nfe.php
+proj_nfe/<br>
+├── certificado/<br>
+│   └── certificado.pfx  (Certificado digital da sua empresa)<br>
+├── Dockerfile //não usado<br>
+├── docker-compose.yml//não usado<br>
+├── vendor/<br>
+├── composer.json<br>
+├── testa_nfe.php<br>
 
 
 Biblioteca baixada via composer no CMD: 
