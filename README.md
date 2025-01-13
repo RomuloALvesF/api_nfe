@@ -9,7 +9,7 @@ proj_nfe/<br>
 ├── Dockerfile //não usado<br>
 ├── docker-compose.yml//não usado<br>
 ├── vendor/<br>
-      └── arquivos de configuração em geral<br>
+       └── arquivos de configuração em geral<br>
 ├── composer.json<br>
 ├── src<br>
     └── index.php  (Carregamento com biblioteca nfe)<br>
