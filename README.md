@@ -14,5 +14,6 @@ proj_nfe/<br>
 
 
 Biblioteca baixada via composer no CMD:<br>
+repositorio original:https://github.com/nfephp-org/sped-nfe<br>
 cd C:\xampp\htdocs\proj_nfe<br>
 composer require nfephp-org/sped-nfe<br>
