@@ -40,12 +40,12 @@ try {
     // Bloco ide (obrigatório)
     $std = new \stdClass();
     $std->cUF = 31; // Código da UF (MG = 31)
-    $std->cNF = str_pad(random_int(1, 99999999), 8, '0', STR_PAD_LEFT); // Código numérico gerado aleatoriamente
-    $std->natOp = 'Venda de mercadoria'; // Natureza da operação
-    $std->mod = 55; // Modelo da NFe
-    $std->serie = 1; // Série da NFe
-    $std->nNF = 100; // Número da NFe
-    $std->dhEmi = (new \DateTime())->format('Y-m-d\TH:i:sP'); // Data e hora de emissão
+    $std->cNF = str_pad(random_int(1, 99999999), 8, '0', STR_PAD_LEFT);
+    $std->natOp = 'Licenciamento de software';
+    $std->mod = 55;
+    $std->serie = 2;
+    $std->nNF = 104;//numero da nota lembrar de alterar sempre que gerar uma nova nota
+    $std->dhEmi = (new \DateTime())->format('Y-m-d\TH:i:sP');
     $std->tpNF = 1; // Tipo de operação: 1 = Saída
     $std->idDest = 1; // Destino: 1 = Interno
     $std->cMunFG = 3106200; // Código do município do emitente
@@ -65,7 +65,8 @@ try {
     $std->xNome = "MV SOFT SISTEMAS E TECNOLOGIA LTDA";
     $std->CNPJ = "31646541000115";
     $std->IE = "0032869840071";
-    $std->CRT = 3; // Código de regime tributário: 3 = Simples Nacional
+    $std->IM = "11078800019"; // Inscrição Municipal
+    $std->CRT = 1; // 1 = Simples Nacional
     $make->tagemit($std);
 
 
@@ -83,60 +84,58 @@ try {
 
     // Bloco dest (destinatário - obrigatório)
     $std = new \stdClass();
-    $std->xNome = 'EMPRESA TESTE DESTINATARIO LTDA';
-    $std->CNPJ = '31646541000115'; // CNPJ do destinatário
-    $std->indIEDest = '1'; // 1=Contribuinte ICMS
-    $std->IE = '0032869840071'; // Inscrição Estadual do destinatário
+    $std->xNome = 'ASSOCIACAO DO PESSOAL DA CAIXA ECONOMICA FEDERAL DE MINAS GERAIS - APCEF/MG';
+    $std->CNPJ = '17299090000166'; // CNPJ do destinatário
+    $std->indIEDest = '9'; // 1=Contribuinte ICMS
+    $std->IE = ''; // Inscrição Estadual do destinatário
     $make->tagdest($std);
 
     // Bloco enderDest (endereço do destinatário - obrigatório)
     $std = new \stdClass();
-    $std->xLgr = 'Rua Teste';
-    $std->nro = '123';
-    $std->xBairro = 'Centro';
+    $std->xLgr = 'RUA EXPEDICIONARIO CELSO RACIOPP';
+    $std->nro = '145';
+    $std->xBairro = 'São Luíz';
     $std->cMun = '3106200'; // Código do município (Belo Horizonte)
     $std->xMun = 'Belo Horizonte';
     $std->UF = 'MG';
-    $std->CEP = '30140000';
+    $std->CEP = '31310070';
     $std->cPais = '1058'; // Brasil
     $std->xPais = 'Brasil';
     $make->tagenderDest($std);
 
     // Bloco prod (obrigatório)
     $std = new \stdClass();
-    $std->item = 1; // Número do item
-    $std->cProd = "001"; // Código do produto
-    $std->xProd = "Produto Teste"; // Nome do produto
-    $std->NCM = "61091000"; // Código NCM
-    $std->CFOP = "5102"; // CFOP
-    $std->uCom = "UN"; // Unidade comercial
-    $std->qCom = 1.0000; // Quantidade comercial
-    $std->vUnCom = 100.00; // Valor unitário
-    $std->vProd = 100.00; // Valor total
-    $std->uTrib = "UN"; // Unidade tributável
-    $std->qTrib = 1.0000; // Quantidade tributável
-    $std->vUnTrib = 100.00; // Valor unitário tributável
-    $std->cEAN = "SEM GTIN"; // Caso o produto não tenha GTIN
-    $std->cEANTrib = "SEM GTIN"; // Caso o produto não tenha GTIN
-    $std->indTot = 1; // Indicador de totalização no valor da NFe
+    $std->item = 1;
+    $std->cProd = "LIC001";
+    $std->xProd = "Licenciamento ou cessao de direito de uso de programas de computação";
+    $std->NCM = "85049090";
+    $std->CFOP = "5101";
+    $std->uCom = "UN";
+    $std->qCom = 1; // Quantidade comercial
+    $std->vUnCom = 1500.00; // Valor unitário comercial
+    $std->vProd = 1500.00; // Valor total do produto
+    $std->uTrib = "UN";
+    $std->qTrib = 1; // Quantidade tributável deve ser igual à quantidade comercial
+    $std->vUnTrib = 1500.00; // Valor unitário tributável
+    $std->cEAN = "SEM GTIN";
+    $std->cEANTrib = "SEM GTIN";
+    $std->indTot = 1;
     $make->tagprod($std);
 
     // Adicionar informações do imposto (obrigatório)
     $std = new \stdClass();
     $std->item = 1;
-    $std->vTotTrib = 0.00;
+    $std->vTotTrib = 38.29;
     $make->tagimposto($std);
 
     // Adicionar informações do ICMS (obrigatório)
     $std = new \stdClass();
     $std->item = 1;
     $std->orig = 0;
-    $std->CST = '00';
-    $std->modBC = 0;
-    $std->vBC = 100.00;
-    $std->pICMS = 18.00;
-    $std->vICMS = 18.00;
-    $make->tagICMS($std);
+    $std->CSOSN = '102'; // For Simples Nacional
+    $std->pCredSN = 0.00;
+    $std->vCredICMSSN = 0.00;
+    $make->tagICMSSN($std);
 
     // Adicionar informações do PIS (não tributado)
     $std = new \stdClass();
@@ -169,8 +168,9 @@ try {
 
     // Adicionar detalhes do pagamento
     $std = new \stdClass();
-    $std->tPag = '01'; // 01=Dinheiro
-    $std->vPag = 100.00; // Valor do pagamento
+    $std->tPag = '99'; // Outros meios de pagamento
+    $std->vPag = 1500.00; // Valor do pagamento deve ser igual ao valor total da nota
+    $std->xPag = 'Transferencia Bancaria'; // Descrição do pagamento - obrigatório para tPag = 99
     $make->tagdetPag($std);
 
     // Verificar erros antes de montar o XML
