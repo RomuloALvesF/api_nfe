@@ -228,5 +228,3 @@ try {
     echo "Erro: " . $e->getMessage();
 }
 
-$teste = 'teste';
-echo $teste;
