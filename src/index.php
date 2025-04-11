@@ -227,3 +227,6 @@ try {
 } catch (\Exception $e) {
     echo "Erro: " . $e->getMessage();
 }
+
+$teste = 'teste';
+echo $teste;
